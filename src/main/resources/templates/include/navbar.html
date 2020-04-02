@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="webjars/layui/2.5.6/css/layui.css">
+</head>
+<body>
+<ul class="layui-nav" lay-filter="" th:fragment="navbar">
+    <li class="layui-nav-item"><a th:href="@{/adminSystem}">所有设备</a></li>
+    <li class="layui-nav-item"><a th:href="@{/addApparatus}">添加设备</a></li>
+    <li class="layui-nav-item">
+        <a href="javascript:;" th:text="${session.admin.username}"></a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a th:href="@{/logout}">登出</a></dd>
+        </dl>
+    </li>
+</ul>
+<script th:fragment="navbar">
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
+    });
+</script>
+</body>
+</html>

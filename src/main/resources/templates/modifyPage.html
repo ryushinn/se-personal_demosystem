@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>modify</title>
+    <link rel="stylesheet" th:href="@{/webjars/layui/2.5.6/css/layui.css}">
+</head>
+<body>
+<script src="webjars/layui/2.5.6/layui.js"></script>
+<div th:replace="include/navbar::navbar"></div>
+<div class="layui-container">
+    <br/>
+    <div class="layui-row">
+        <div class="layui-col-md-offset5">
+            <div class="layui-field-title" style="font-size: xx-large; letter-spacing: 7px;color: darkgray"><B>设备表单</B>
+            </div>
+        </div>
+    </div>
+    <div th:if="${message}" class="layui-row">
+        <div class="layui-col-md4 layui-col-md-offset5">
+            <div class="layui-field-title" th:text="${message}" style="color: red"></div>
+        </div>
+    </div>
+    <form class="layui-form" th:action="@{/modifyApparatus}" method="POST">
+        <input type="hidden" name="apparaId" th:value="${me.apparaId}"/>
+        <div class="layui-row">
+            <div class="layui-col-md5 layui-col-md-offset3">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">设备名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="apparaName" required lay-verify="required" th:value="${me.apparaName}"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md5 layui-col-md-offset3">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">实验室名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="labName" required lay-verify="required" th:value="${me.labName}"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md5 layui-col-md-offset3">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">购买人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="boughtBy" required lay-verify="required" th:value="${me.boughtBy}"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md5 layui-col-md-offset3">
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.buaa.se.demosystem.mapper.ApparatusMapper">
+    <select id="selectByPrimaryKey" resultType="cn.edu.buaa.se.demosystem.bean.Apparatus">
+        SELECT * FROM apparatuses WHERE appara_id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="cn.edu.buaa.se.demosystem.bean.Apparatus">
+        SELECT * FROM apparatuses
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="apparaId" parameterType="cn.edu.buaa.se.demosystem.bean.Apparatus">
+        insert into apparatuses(appara_name, lab_name, buy_time, bought_by) values(#{apparaName}, #{labName}, #{buyTime}, #{boughtBy})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="Integer">
+        DELETE FROM apparatuses where appara_id = #{id}
+    </delete>
+    
+    <update id="updateByPrimaryKey" parameterType="cn.edu.buaa.se.demosystem.bean.Apparatus">
+        update apparatuses set
+        appara_name = #{apparaName},
+        lab_name = #{labName},
+        bought_by = #{boughtBy}
+        where appara_id = #{apparaId}
+    </update>
+</mapper>
